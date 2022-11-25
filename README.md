@@ -39,8 +39,8 @@ O Spring Cloud Config utiliza um repositório git hospedado no Github para armaz
 
 O repositório utilizado para o exemplo desse projeto é o repositório abaixo:
 
-[spring--cloud-config-data]('https://github.com/lucas-silvs/spring--cloud-config-data')
+[spring--cloud-config-data](https://github.com/lucas-silvs/spring--cloud-config-data)
 
 ## Referencia:
 
-[Spring-Cloud-Config]("https://docs.spring.io/spring-cloud-config/docs/current/reference/html/#_spring_cloud_config_server")
+[Spring-Cloud-Config](https://docs.spring.io/spring-cloud-config/docs/current/reference/html/#_spring_cloud_config_server)
