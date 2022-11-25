@@ -1,0 +1,20 @@
+server:
+    port: 5001
+
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lucas-silvs/spring--cloud-config-data.git
+          basedir: ./configs
+          force-pull: true
+#          refresh-rate: 60s
+          searchPaths: '{application}'
+
+  security:
+    username: root
+    password: s3cr3t
+
