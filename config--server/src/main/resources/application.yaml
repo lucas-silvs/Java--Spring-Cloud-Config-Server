@@ -11,10 +11,12 @@ spring:
           uri: https://github.com/lucas-silvs/spring--cloud-config-data.git
           basedir: ./configs
           force-pull: true
-#          refresh-rate: 60s
+          refreshRate: 60
           searchPaths: '{application}'
 
   security:
     username: root
     password: s3cr3t
+
+encrypt.key: ${ENCRYPTOR_KEY}
 
