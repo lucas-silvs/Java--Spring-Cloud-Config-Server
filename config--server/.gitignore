@@ -37,4 +37,4 @@ out/
 .vscode/
 
 ### Config Server Data
-/configs
+**/configs/
