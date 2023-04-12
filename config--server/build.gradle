@@ -1,6 +1,6 @@
 plugins {
-	id 'org.springframework.boot' version '2.7.4'
-	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+	id 'org.springframework.boot' version '3.0.1'
+	id 'io.spring.dependency-management' version '1.1.0'
 	id 'java'
 }
 
@@ -13,7 +13,7 @@ repositories {
 }
 
 ext {
-	set('springCloudVersion', "2021.0.4")
+	set('springCloudVersion', "2022.0.2")
 }
 
 dependencies {
@@ -23,6 +23,12 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	implementation 'org.zalando:logbook-spring-boot-starter:3.0.0-RC.0'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+
+
 }
 
 dependencyManagement {

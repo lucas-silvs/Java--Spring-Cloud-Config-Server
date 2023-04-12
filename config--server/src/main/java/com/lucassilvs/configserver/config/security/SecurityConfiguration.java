@@ -1,12 +1,10 @@
 package com.lucassilvs.configserver.config.security;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -45,13 +43,13 @@ public class SecurityConfiguration {
         http.csrf().disable()
                 .httpBasic()
                 .and()
-                .authorizeRequests()
-                .antMatchers("/actuator/**")
+                .authorizeHttpRequests()
+                .requestMatchers("/actuator/**")
                 .permitAll()
-                .antMatchers("/actuator")
+                .requestMatchers("/actuator")
                 .permitAll()
                 .and()
-                .authorizeRequests()
+                .authorizeHttpRequests()
                 .anyRequest()
                 .authenticated();
         return http.build();

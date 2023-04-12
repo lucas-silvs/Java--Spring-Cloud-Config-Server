@@ -1,5 +1,7 @@
 server:
     port: 5001
+    servlet:
+      context-path: '/config-server'
 
 spring:
   application:
@@ -20,3 +22,6 @@ spring:
 
 encrypt.key: ${ENCRYPTOR_KEY}
 
+logging:
+  level:
+    org.zalando.logbook: TRACE
