@@ -1,6 +1,7 @@
 package com.lucassilvs.configserver.config.logbook;
 
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.commons.lang3.StringUtils;
@@ -30,7 +31,6 @@ public class LogbookPropertyFilter {
         }
 
     }
-
     @Bean
     public ResponseFilter responseFilter() {
         return ResponseFilter.merge(
@@ -38,13 +38,12 @@ public class LogbookPropertyFilter {
                 ResponseFilters.replaceBody(response -> {
                     if (match(response)) {
                         try {
-                            var bodyAsString = response.getBodyAsString();
+                            String bodyAsString = response.getBodyAsString();
                             if (StringUtils.isNotEmpty(bodyAsString)) {
-                                var objectNode = objectMapper.readValue(bodyAsString, ObjectNode.class);
-                                var sources = objectNode.get("propertySources");
-                                for (int i = 0; i < sources.size(); i++) {
-                                    var source = (ObjectNode) sources.get(i);
-                                    source.remove("source");
+                                ObjectNode objectNode = objectMapper.readValue(bodyAsString, ObjectNode.class);
+                                JsonNode sources = objectNode.get("propertySources");
+                                for (JsonNode node: sources) {
+                                    ((ObjectNode) node).remove("source");
                                 }
                                 return objectMapper.writeValueAsString(objectNode);
                             }
