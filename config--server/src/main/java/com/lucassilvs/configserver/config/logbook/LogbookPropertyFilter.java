@@ -43,7 +43,7 @@ public class LogbookPropertyFilter {
                                 ObjectNode objectNode = objectMapper.readValue(bodyAsString, ObjectNode.class);
                                 JsonNode sources = objectNode.get("propertySources");
                                 for (JsonNode node: sources) {
-                                    ((ObjectNode) node).remove("source");
+                                    ((ObjectNode) node).put("source", "<Ocultado>");
                                 }
                                 return objectMapper.writeValueAsString(objectNode);
                             }
