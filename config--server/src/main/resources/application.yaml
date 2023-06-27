@@ -10,7 +10,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/lucas-silvs/spring--cloud-config-data.git
           basedir: ./configs
           force-pull: true
           refreshRate: 60

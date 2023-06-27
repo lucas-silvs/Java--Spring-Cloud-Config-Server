@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:lucas-silvs/spring--cloud-config-data.git
