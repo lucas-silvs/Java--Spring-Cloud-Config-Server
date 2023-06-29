@@ -11,7 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.zalando.logbook.HttpResponse;
 import org.zalando.logbook.ResponseFilter;
-import org.zalando.logbook.ResponseFilters;
+import org.zalando.logbook.core.ResponseFilters;
+
 @Configuration
 public class LogbookPropertyFilter {
 

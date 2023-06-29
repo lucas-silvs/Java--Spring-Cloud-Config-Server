@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 
+import static com.lucassilvs.configserver.enums.GitCredentialsEnums.GIT_PASSWORD;
+import static com.lucassilvs.configserver.enums.GitCredentialsEnums.GIT_USERNAME;
+
 @Configuration
 public class CredentialGitConfiguration {
 
@@ -19,7 +22,8 @@ public class CredentialGitConfiguration {
     @Bean
     @DependsOn("SecretGitCredential")
     public void configureGitCredential() {
-        System.setProperty("spring.cloud.config.server.git.username", secretProperties.getUsername());
-        System.setProperty("spring.cloud.config.server.git.password", secretProperties.getPassword());
+
+        System.setProperty(GIT_USERNAME.getValue(), secretProperties.getUsername());
+        System.setProperty(GIT_PASSWORD.getValue(), secretProperties.getPassword());
     }
 }

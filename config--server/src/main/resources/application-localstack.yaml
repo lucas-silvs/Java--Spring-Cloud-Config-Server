@@ -4,6 +4,9 @@ spring:
       server:
         git:
           uri: http://127.0.0.1/config-server/spring-cloud-config-data.git
+          username: ${GIT_USERNAME}
+          password: ${GIT_PASSWORD}
+
 
 aws:
   secret:
