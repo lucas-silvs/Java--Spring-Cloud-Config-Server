@@ -6,7 +6,7 @@ public class CustomPasswordEncoder implements PasswordEncoder {
 
     @Override
     public String encode(CharSequence rawPassword) {
-        return String.valueOf(rawPassword);
+        return String.format("{noop}%s",rawPassword);
     }
 
     @Override
