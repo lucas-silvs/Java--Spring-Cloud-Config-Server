@@ -27,6 +27,10 @@ dependencies {
 	implementation 'org.zalando:logbook-spring-boot-starter:3.0.0-RC.0'
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
 
+	//aws
+	implementation 'software.amazon.awssdk:secretsmanager:2.20.94'
+
+
 
 
 }
