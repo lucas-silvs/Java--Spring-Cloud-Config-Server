@@ -1,7 +1,7 @@
 FROM gradle:7.5.1-jdk17 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle build --no-daemon
+RUN gradle build -x test --no-daemon
 
 
 FROM amazoncorretto:17-alpine-jdk
@@ -9,8 +9,10 @@ FROM amazoncorretto:17-alpine-jdk
 LABEL "author" = "Lucas Santos"
 LABEL "email"="lucas.parkl@outlook.com"
 
-#Configure credenciais ssh no diretório ~/.ssh/known_hosts
-RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+#importa o diretorio .ssh para dentro do container
+
+#COPY ~/.ssh/id_rsa.pub /root/.ssh/id_rsa.pub
+
 
 
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/app.jar

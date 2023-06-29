@@ -3,4 +3,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/lucas-silvs/spring--cloud-config-data.git
+          uri: http://127.0.0.1/config-server/spring-cloud-config-data.git
+          username: "config--server"
+          password: "glpat-cR34AQFyDrt5NHGZvcxW"
