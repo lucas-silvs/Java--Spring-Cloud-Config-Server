@@ -12,7 +12,7 @@ import static com.lucassilvs.configserver.enums.GitCredentialsEnums.GIT_USERNAME
 @Configuration
 public class CredentialGitConfiguration {
 
-    private SecretProperties secretProperties;
+    private final SecretProperties secretProperties;
 
     @Autowired
     public CredentialGitConfiguration(SecretProperties secretProperties) {
