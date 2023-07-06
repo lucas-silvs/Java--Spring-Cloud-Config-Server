@@ -15,6 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.util.List;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
@@ -35,7 +37,19 @@ public class SecurityConfiguration {
                 .roles("APP")
                 .build();
 
-        return new InMemoryUserDetailsManager(userDetails);
+        UserDetails userDetailsMonitoring = User.withUsername("monitoring")
+                .password(encoder.encode("monitoring"))
+                .roles("MONITORING", "OPERATOR")
+                .build();
+
+        UserDetails operator = User.withUsername("operator")
+                .password(encoder.encode("operator"))
+                .roles("OPERATOR")
+                .build();
+
+        List<UserDetails> userDetailsList = List.of(userDetails, userDetailsMonitoring, operator);
+
+        return new InMemoryUserDetailsManager(userDetailsList);
     }
 
     @Bean
@@ -43,7 +57,8 @@ public class SecurityConfiguration {
        http
                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize ->
-                        authorize.requestMatchers("/actuator/**", "/actuator/").permitAll()
+                        authorize.requestMatchers("/actuator/**", "/actuator/").hasAuthority("ROLE_MONITORING")
+                                .requestMatchers("/encrypt/**", "/decrypt/**").hasAuthority("ROLE_OPERATOR")
                                 .anyRequest().authenticated()
                 ).httpBasic(Customizer.withDefaults());
        return http.build();
