@@ -13,7 +13,7 @@ repositories {
 }
 
 ext {
-	set('springCloudVersion', "2022.0.2")
+	set('springCloudVersion', "2022.0.3")
 }
 
 dependencies {
@@ -21,7 +21,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-config-server'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'io.micrometer:micrometer-core:1.11.1'
+	implementation 'io.micrometer:micrometer-registry-prometheus:1.11.1'
+
+
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
@@ -31,9 +36,6 @@ dependencies {
 
 	//aws
 	implementation 'software.amazon.awssdk:secretsmanager:2.20.94'
-
-
-
 
 }
 
