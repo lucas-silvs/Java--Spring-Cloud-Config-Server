@@ -14,13 +14,28 @@ spring:
           force-pull: true
           refreshRate: 60
           searchPaths: '{application}'
+          clone-on-start: true
 
-  security:
-    username: root
-    password: s3cr3t
+  actuator:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+        base-path: /actuator
+
+security:
+  username: root
+  password: s3cr3t
+
+management:
+  server:
+    port: 9090
+
 
 encrypt.key: ${ENCRYPTOR_KEY}
 
 logging:
   level:
     org.zalando.logbook: TRACE
+    org.springframework.security: TRACE
+
