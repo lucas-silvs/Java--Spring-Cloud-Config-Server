@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: projeto-teste
+  cloud:
+    config:
+      uri: http://127.0.0.1:5001/config-server/
+      username: root
+      password: s3cr3t
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

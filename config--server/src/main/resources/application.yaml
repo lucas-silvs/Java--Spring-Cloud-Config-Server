@@ -23,13 +23,17 @@ spring:
           include: '*'
         base-path: /actuator
 
-security:
-  username: root
-  password: s3cr3t
-
 management:
   server:
     port: 9090
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details:  ALWAYS
 
 
 encrypt.key: ${ENCRYPTOR_KEY}
@@ -38,4 +42,22 @@ logging:
   level:
     org.zalando.logbook: TRACE
     org.springframework.security: TRACE
+
+
+
+users:
+  credentials:
+    - username: root
+      password: s3cr3t
+      roles:
+        - USER
+        - ADMIN
+    - username: monitoring
+      password: monitoring
+      roles:
+        - MONITORING
+    - username: operator
+      password: operator
+      roles:
+        - OPERATOR
 
